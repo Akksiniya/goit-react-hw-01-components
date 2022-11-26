@@ -10,9 +10,16 @@ import dataFriendList from 'data/friends.json'
 import {TransactionHistory} from 'components/transactionHistory/TransactionHistory'
 import dataTransactions from 'data/transactions.json'
 
+import {Box} from 'components/Box'
+
 export const App = () => {
   return (
-    <div>
+<Box 
+
+width = '720px'
+textAlign = 'center'
+height="100%" bg="#f2f1ed" mx="auto" pt="10px">
+    
  <Profile
   username={dataProfile.username}
   tag={dataProfile.tag}
@@ -23,21 +30,13 @@ export const App = () => {
 
 <Statistics 
 stats={dataStatistics}
-  // key={dataStatistics.id}
-  title="Upload stats"
-  // label={dataStatistics.label}
-  // percentage={dataStatistics.percentage}
+   title="Upload stats"
+  />
 
+<FriendList friends={dataFriendList} />
 
- 
-/>
+<TransactionHistory items={dataTransactions} />
 
-<FriendList friends={dataFriendList} />;
-
-<TransactionHistory items={dataTransactions} />;
-
-
-
-  </div>
+  </Box>
   );
 };

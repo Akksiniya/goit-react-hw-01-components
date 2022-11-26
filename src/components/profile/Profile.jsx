@@ -1,37 +1,97 @@
 import PropTypes from 'prop-types'
-import css from './Profile.module.css'
+
+import {Box} from 'components/Box'
+import { Avatar, UserName, UserText, StatsLabel, StatsQuantity } from 'components/profile/Profile.styled'
+
 
 export const Profile = ({ username, tag, location, avatar, stats}) => {
 
     return (
 
-    <div className={css.profile}>
-    <div className={css.description}>
-    <img
+    <Box 
+     bg = 'mainBg'
+     width = '300px'
+     height = '400px'
+     textAlign = 'center'
+     mt = '30px'
+     mx = 'auto'
+     border = 'borderBold'
+     boxShadow = 'normal'
+     >
+   
+    <Box
+    mt = '40px'>
+    
+    <Avatar
       src={avatar}
       alt="User avatar"
-      className={css.avatar}
+      
     />
-    <p className={css.name}>{username}</p>
-    <p className={css.tag}>@{tag}</p>
-    <p className={css.location}>{location}</p>
-  </div>
+    <UserName>{username}</UserName>
+    <UserText>@{tag}</UserText>
+    <UserText>{location}</UserText>
 
-  <ul className={css.stats}>
-    <li className={css.stats_item}>
-      <span className={css.label}>Followers</span>
-      <span className={css.quantity}>{stats.followers}</span>
-    </li>
-    <li className={css.stats_item}>
-      <span className={css.label}>Views</span>
-      <span className={css.quantity}>{stats.views}</span>
-    </li>
-    <li className={css.stats_item}>
-      <span className={css.label}>Likes</span>
-      <span className={css.quantity}>{stats.likes}</span>
-    </li>
-  </ul>
-</div>)
+  </Box>
+
+  <Box 
+ 
+  width = '100%'
+  height = '60px'
+  display = 'flex'
+  justifyContent = 'space-between'
+  bg = 'secondaryBg'
+ 
+  alignItems = 'center'
+  textAlign = 'center'
+  mt = '43px'
+  p = '0'
+  
+  borderTop = 'borderNorm'
+  
+          >
+
+  <Box 
+  display = 'flex'
+  flexDirection = 'column'
+  justifyContent = 'center'
+  alignItems = 'center'
+  
+  width = '100%'
+  height = '100%'
+  
+  borderRight = 'borderNorm'>
+      <StatsLabel>Followers</StatsLabel>
+      <StatsQuantity>{stats.followers}</StatsQuantity>
+    
+    </Box>
+    <Box 
+    display = 'flex'
+    flexDirection = 'column'
+    justifyContent = 'center'
+    alignItems = 'center'
+    width = '100%'
+    height = '100%'
+  
+  borderRight = 'borderNorm'>
+      <StatsLabel>Views</StatsLabel>
+      <StatsQuantity>{stats.views}</StatsQuantity>
+      </Box>
+      <Box 
+      display = 'flex'
+      flexDirection = 'column'
+      justifyContent = 'center'
+      alignItems = 'center'
+      width = '100%'
+      height = '100%'
+  
+  borderRight = 'borderNorm'>
+      <StatsLabel>Likes</StatsLabel>
+      <StatsQuantity>{stats.likes}</StatsQuantity>
+    </Box>
+  
+  </Box>
+
+</Box>)
 
 }
 

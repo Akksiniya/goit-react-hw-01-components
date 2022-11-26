@@ -1,14 +1,25 @@
 import PropTypes from 'prop-types'
+import {Box} from 'components/Box'
+import { Title, Columns, Info } from 'components/transactionHistory/TransactionHistory.styled'
 
 export const TransactionHistory = ({ items }) => {
 
     return (
-        <table className="transaction-history">
+      <Box
+      as = 'table' 
+      width = '700px'
+      bg = 'secondaryBg'
+      mx = 'auto'
+      mt = '50px'
+      borderRadius = 'normal'
+      boxShadow = '0px 4px 4px rgba(0, 0, 0, 0.15)'
+        >
+        
   <thead>
     <tr>
-      <th>Type</th>
-      <th>Amount</th>
-      <th>Currency</th>
+      <Title>Type</Title>
+      <Title>Amount</Title>
+      <Title>Currency</Title>
     </tr>
   </thead>
 
@@ -17,11 +28,11 @@ export const TransactionHistory = ({ items }) => {
     {items.map(({ id, type, amount, currency }) => {
 
       return (
-        <tr key ={id}>
-      <td>{type}</td>
-      <td>{amount}</td>
-      <td>{currency}</td>
-    </tr>
+        <Columns key ={id}>
+      <Info>{type}</Info>
+      <Info>{amount}</Info>
+      <Info>{currency}</Info>
+    </Columns>
 
       )
 
@@ -30,15 +41,20 @@ export const TransactionHistory = ({ items }) => {
     
     
   </tbody>
-</table>
+
+</Box>
 
     )
 }
 
 TransactionHistory.propTypes = {
 
-  id: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  amount: PropTypes.string.isRequired,
-  currency: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      amount: PropTypes.string.isRequired,
+      currency: PropTypes.string.isRequired,
+    })
+  ),
 }

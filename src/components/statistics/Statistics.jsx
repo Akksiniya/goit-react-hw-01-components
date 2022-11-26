@@ -1,31 +1,74 @@
 import PropTypes from 'prop-types'
+import { Box } from 'components/Box'
+import getRandomHexColor from 'utils/getRandomHexColor'
+import { Title, Label, Percentage} from 'components/statistics/Statistics.styled'
 
-export const Statistics = ({ title, stats}) => {
+export const Statistics = ({ stats, title }) => {
     return (
-        <section className="statistics">
+      <Box
+      width = '400px'
+      as = 'section'
+      textAlign = 'center'
+      border = 'borderBold'
+      mt = '50px'
+      mx = 'auto'
+      bg = 'mainBg'
+      
+      >
+      
+      {title &&  <Title>{title}</Title>}
 
-            {title &&  <h2 className="title">{title}</h2>}
-
-  <ul className="stat-list">
+      <Box 
+      
+      display = 'flex'
+      alignItems = 'center'
+      textAlign = 'center'
+      justifyContent = 'space-around'
+      width = '100%'
+      height= '60px'
+      bg = {getRandomHexColor()}
+      p ='0'
+      m = '0'
+      mt = '20px'
+      >
+ 
 
     {stats.map(({ id, label, percentage }) => {
     return  (
-        <li key ={id} className="item">
-        <span className="label">{label}</span>
-        <span className="percentage">{percentage}%</span>
-      </li>
+      <Box
+      key ={id}
+      width = '100%'
+      height = '100%'
+      display = 'flex'
+      flexDirection = 'column'
+      justifyContent = 'center'
+      bg = {getRandomHexColor()}
+      
+
+      >
+        
+        <Label>{label}</Label>
+        <Percentage>{percentage}%</Percentage>
+      
+      </Box>
     )})
       }
     
     
-  </ul>
-</section>
+  
+  </Box>
+
+</Box>
     )
 }
 
 Statistics.propTypes = {
 
     title: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    percentage: PropTypes.number.isRequired,
-}
+    stats: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired,
+        percentage: PropTypes.number.isRequired,
+      }))
+    }
